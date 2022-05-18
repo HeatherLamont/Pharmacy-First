@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div>
+        <section>
+            <h2>Register</h2>
+        </section>
+    </div>
+
+    <form action="{% url 'patient_register' %} '" method="post">
+        {% csrf_token %}
+        <div class="input-group">
+            <label for="username">Username</label>
+            <input required type="text" name="username" id="username">
+          </div>
+  
+          <div class="input-group">
+            <label for="password">Password</label>
+            <input required type="password" name="password1" id="password">
+          </div>
+  
+          <div class="input-group">
+            <label for="confirm-password">Confirm Password</label>
+            <input required type="password" name="password2" id="confirm-password">
+          </div>
+  
+          <input type="submit" value="Register" class="button yellow" />
+          <input type="hidden" name="next" value="{{ next }}" />
+
+
+
+    </form>
+
+
+
+
+
+</main>
+{% endblock %}

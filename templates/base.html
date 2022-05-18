@@ -1,0 +1,43 @@
+{% load static %}
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <title>Pharmacy First Checker</title>
+</head>
+<body>
+    <header class="navbar">
+        <section>
+            <img class="logo" src="https://www.unitetheunion.org/media/3777/nhsscotlandlogo.png" alt="NHS logo">
+            <h1>Pharmacy First Checker</h1>
+            <nav>
+                <li> 
+                    <a href="{% url 'home' %}">Home</a>
+                </li>
+                <li>
+                    <a href="https://www.nhsinform.scot/care-support-and-rights/nhs-services/pharmacy/nhs-pharmacy-first-scotland">NHS inform</a>
+                </li>
+            </nav>
+        </section>
+        <nav class="auth-nav">
+            {% if user.is_authenticated %}
+              <span>Logged in as: <span class="logged-in-username">{{ user.username }}</span></span>
+              <span> | </span>
+              <a href="{% url 'patient_logout' %}">Log out</a>
+            {% else %}
+              <a href="{% url 'patient_login' %}">Log In</a>
+              <span> | </span>
+              <a href="{% url 'patient_register' %}">Register</a>
+            {% endif %}
+          </nav>
+        </header>
+    </header>
+</body>
+</html>
+{% block content %}
+{% endblock %}
